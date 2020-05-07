@@ -50,8 +50,6 @@ int main() {
     calculate_weights(word, even, odd);
     print_vector(word, even, odd);
 
-    //then print the characters with ascii values underneath, and the summed weights
-
 
 }
 
