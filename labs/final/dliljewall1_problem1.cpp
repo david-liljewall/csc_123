@@ -53,7 +53,7 @@ int main() {
     calculate_weights(word, even, odd, e_sum, o_sum);
     print_char_vectors(even, odd, e_sum, o_sum);
 
-
+    return 0;
 }
 
 /* -------------------------------------------------------------------------- */
