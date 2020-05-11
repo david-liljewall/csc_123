@@ -66,7 +66,7 @@ int main() {
     cout << " How many pots do you want to start with? (maximum of 32k)" << endl;
     cin >> n_pots;
 
-    grid = new Pot[n_pots]; // initialize a dynamic array grid[]
+    grid = new Pot[n_pots]; // initialize a dynamic array grid[] of size n_pots
 
     
     // continue to simulation only if n_pots is less than defined maximum:
@@ -89,12 +89,12 @@ int main() {
        
         do {
             n_days++; // increment # of days
-            monster_duplication_middle(grid, n_pots, n_monsters);
             monster_duplication_edge(grid, n_pots, n_monsters);
+            monster_duplication_middle(grid, n_pots, n_monsters);
             update_pots(grid, n_pots);
             display_pots(grid, n_pots, n_days);
 
-        } while (n_monsters <= n_pots);
+        } while (n_monsters < n_pots);
 
         // getchar();
     }
@@ -187,6 +187,7 @@ void monster_duplication_middle(Pot axis[], int& pots_n, int& monsters_n) {
             else if (axis[i + 1].is_planted) {
                 axis[i].is_planted = true;
                 monsters_n++;
+                i+=2;
             }
             else {
                 i++;
