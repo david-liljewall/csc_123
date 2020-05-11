@@ -28,12 +28,13 @@ using namespace std;
 /* -------------------------------------------------------------------------- */
 /*                            FUNCTION DECLARATIONS                           */
 /* -------------------------------------------------------------------------- */
-void string_to_vector(string& sample, vector<char>& even_chars, vector<char>& odd_chars);
+void string_to_vector(string& user_word, vector<char>& even_chars, vector<char>& odd_chars);
     //
-void calculate_weights(string& user_word, vector<char>& even_chars, vector<char>& odd_chars);
+void calculate_weights(string& user_word, vector<char>& even_chars, vector<char>& odd_chars, int& even_sum, int& odd_sum);
     //
-void print_vector(string& user_word, vector<char>& even_chars, vector<char>& odd_chars);
+void print_char_vectors(vector<char>& even_chars, vector<char>& odd_chars, int& even_sum, int& odd_sum);
     //
+void print_string(string& user_word);
 
 
 /* -------------------------------------------------------------------------- */
@@ -42,32 +43,23 @@ void print_vector(string& user_word, vector<char>& even_chars, vector<char>& odd
 int main() {
 
     string word; // defines an empty vector that will hold a string type
-    vector<char> even(1); vector<char> odd(1);
+    vector<char> even(1); vector<char> odd(1); // initialize character vectors to size of 1
+    int e_sum, o_sum;
 
     cout << " --> Enter the word you want the find the value for: ";
     cin >> word;
     string_to_vector(word, even, odd);
-    calculate_weights(word, even, odd);
-    print_vector(word, even, odd);
+    print_string(word);
+    calculate_weights(word, even, odd, e_sum, o_sum);
+    print_char_vectors(even, odd, e_sum, o_sum);
 
-
+    return 0;
 }
 
 /* -------------------------------------------------------------------------- */
 /*                            FUNCTION DEFINITIONS                            */
 /* -------------------------------------------------------------------------- */
 void string_to_vector(string& user_word, vector<char>& even_chars, vector<char>& odd_chars) {
-
-    // print characters of user-entered string:
-    for (int i = 0; i < user_word.length(); i++) {
-        cout << setw(5) << user_word[i] << '\t';
-    }
-    cout << endl;
-
-    for (int i = 0; i < user_word.length(); i++) {
-        cout << setw(6) << int(user_word[i]) << '\t';
-    }
-    cout << endl << endl;
 
     // fill even_chars and odd_char vectors
     for (int i = 0; i < user_word.length(); i++) {
@@ -83,9 +75,9 @@ void string_to_vector(string& user_word, vector<char>& even_chars, vector<char>&
 
 }
 
-void calculate_weights(string& user_word, vector<char>& even_chars, vector<char>& odd_chars) {
+void calculate_weights(string& user_word, vector<char>& even_chars, vector<char>& odd_chars, int& even_sum, int& odd_sum) {
     
-    int even_sum = 0, odd_sum = 0; // even and odd character ascii value sums
+    even_sum = 0, odd_sum = 0; // initialize sums to 0
 
     // calculate even and odd weights:
     for (int i = 0; i < even_chars.size(); i++) {
@@ -96,7 +88,13 @@ void calculate_weights(string& user_word, vector<char>& even_chars, vector<char>
         odd_sum += int(odd_chars[i]);
     }
 
-    cout << "Total Weight of the word: " << even_sum + odd_sum << endl;
+}
+
+void print_char_vectors(vector<char>& even_chars, vector<char>& odd_chars, int& even_sum, int& odd_sum) {
+    
+    // calculate and print total sum
+    int total_sum = even_sum + odd_sum;
+    cout << "Total weight of the word: " << total_sum << endl;
 
     // print even characters and their ascii values:
     cout << "Total Even value: " << even_sum << endl;
@@ -115,7 +113,19 @@ void calculate_weights(string& user_word, vector<char>& even_chars, vector<char>
     cout << endl;
 }
 
-void print_vector(string& user_word, vector<char>& even_chars, vector<char>& odd_chars) {
+void print_string(string& user_word) {
+    
+    // print characters of user-entered string:
+    for (int i = 0; i < user_word.length(); i++) {
+        cout << setw(5) << user_word[i] << '\t';
+    }
+    cout << endl;
+
+    for (int i = 0; i < user_word.length(); i++) {
+        cout << setw(6) << int(user_word[i]) << '\t';
+    }
+    cout << endl << endl;
 
 }
+
 
