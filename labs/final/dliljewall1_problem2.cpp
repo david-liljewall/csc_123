@@ -78,11 +78,12 @@ int main() {
         cout << " How many monster plants to start?" << endl;
         cin >> n_monsters;
 
-        cout << " << Simulation Start >> " << endl;
+        cout << " << Simulation Start >> " << endl << endl;
         display_pots(grid, n_pots, n_days);        
         initialize_pots(grid, n_pots, n_monsters);
+
         n_days++;
-        update_pots(grid, n_pots); // update to correct number of days before entering simulation
+        update_pots(grid, n_pots); 
         display_pots(grid, n_pots, n_days);
 
        
@@ -101,6 +102,8 @@ int main() {
     // delete dynamic array grid[] and set to NULL to prevent memory leaks:
     delete[] grid;
     grid = NULL;
+
+    getchar();
 
     return 0;
 }
@@ -143,11 +146,11 @@ void initialize_pots(Pot axis[], int& pots_n, int& monsters_n) {
 void monster_duplication_edge(Pot axis[], int& pots_n, int& monsters_n) {
 
     int i = 0; // left-most pot index
-    if (axis[i].is_planted) {
-        // i == 0 and there exists a plant, check adjacent pot (to the right)
-        if (!axis[i + 1].is_planted) {
+    if (!axis[i].is_planted) {
+        // check pot to the right
+        if (axis[i + 1].is_planted) {
         
-        axis[i + 1].is_planted = true;
+        axis[i].is_planted = true;
         monsters_n++; // increment # of monster plants
 
         }
@@ -155,11 +158,11 @@ void monster_duplication_edge(Pot axis[], int& pots_n, int& monsters_n) {
     }
 
     i = pots_n - 1; // right-most pot index
-    if (axis[i].is_planted) {
-        // i == 0 and there exists a plant, check adjacent pot (to the right)
-        if (!axis[i - 1].is_planted) {
+    if (!axis[i].is_planted) {
+        // check pot to the left
+        if (axis[i - 1].is_planted) {
         
-        axis[i - 1].is_planted = true;
+        axis[i].is_planted = true;
         monsters_n++; // increment # of monster plants
 
         }
@@ -169,32 +172,33 @@ void monster_duplication_edge(Pot axis[], int& pots_n, int& monsters_n) {
 }
 
 void monster_duplication_middle(Pot axis[], int& pots_n, int& monsters_n) {
-    
-    int i = 1; // start at first non-edge pot index
-    while (i < pots_n) {
-        // i == 1,2,..pots_n
-        if (axis[i].is_planted) {
 
-            if (!axis[i - 1].is_planted) {
-                
-                axis[i - 1].is_planted = true;
-                monsters_n++; // increment # of monster plants
+    // start at first non-edge pot, go till 2nd to last pot (1st and last are the edges)
+    int i = 1;
+    while(i < pots_n - 1) {
+        if(!axis[i].is_planted) {
+            // check pot to the left
+            if(axis[i - 1].is_planted) {
+                axis[i].is_planted = true;
+                monsters_n++;
+                i+=2;
             }
-            if (!axis[i + 1].is_planted) {
-
-                axis[i + 1].is_planted = true;
-                monsters_n++; // increment # of monster plants
+            // check pot to the right
+            else if (axis[i + 1].is_planted) {
+                axis[i].is_planted = true;
+                monsters_n++;
             }
-
-            i+=2;
+            else {
+                i++;
+            }
         }
         else {
-
             i++;
         }
-
     }
+
 }
+
 void update_pots(Pot axis[], int& pots_n) {
     
     for (int i = 0; i < pots_n; i++) {
