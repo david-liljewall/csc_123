@@ -20,11 +20,17 @@ using namespace std;
 /*                             STRUCT DECLARATIONS                            */
 /* -------------------------------------------------------------------------- */
 struct Pot {
+<<<<<<< HEAD
     // struct Pot member variables defined below:
 
     int plant_days; // how many days since a monster plant moved in (cell was filled)
     bool is_planted; // tells whether or not pot has a monster plant in it
 
+=======
+    // 
+    int plant_days;
+    bool is_planted;
+>>>>>>> 85a56cda0ad7f0fb0df558b05fff76b89f45d407
 };
 
 
@@ -32,6 +38,7 @@ struct Pot {
 /* -------------------------------------------------------------------------- */
 /*                            FUNCTION DECLARATIONS                           */
 /* -------------------------------------------------------------------------- */
+<<<<<<< HEAD
 void initialize_pots(Pot axis[], int& pots_n, int& monsters_n);
     // Based on user-input for # of monster plants to start with, place them 
     // randomly along the line of pots.
@@ -48,12 +55,16 @@ void update_pots(Pot axis[], int& pots_n);
 void display_pots(Pot axis[], int& pots_n, int& days);
     // Displays the line of pots for a given day, showing whether a pot is filled with 
     // a monster plant, and the # of days since a monster plant moved in.
+=======
+
+>>>>>>> 85a56cda0ad7f0fb0df558b05fff76b89f45d407
 
 /* -------------------------------------------------------------------------- */
 /*                                MAIN FUNCTION                               */
 /* -------------------------------------------------------------------------- */
 int main() {
 
+<<<<<<< HEAD
     srand(unsigned(time(NULL))); // seeds random number generator
 
     int n_pots = 0, n_monsters = 0; // tracks # of pots and # of monster plants
@@ -62,10 +73,15 @@ int main() {
 
     // create dynamic memory for the simulation axis:
     struct Pot *grid; // create struct object pointer which points to dynamic 1D array which defines the 1D grid of the simulation
+=======
+    struct Pot pot;
+    int n_pots, n_monsters;
+>>>>>>> 85a56cda0ad7f0fb0df558b05fff76b89f45d407
 
     cout << " How many pots do you want to start with? (maximum of 32k)" << endl;
     cin >> n_pots;
 
+<<<<<<< HEAD
     grid = new Pot[n_pots]; // initialize a dynamic array grid[] of size n_pots
 
     
@@ -106,10 +122,15 @@ int main() {
     getchar();
 
     return 0;
+=======
+    cout << " How many monster plants to start?" << endl;
+    cin >> n_monsters;
+>>>>>>> 85a56cda0ad7f0fb0df558b05fff76b89f45d407
 }
 
 /* -------------------------------------------------------------------------- */
 /*                            FUNCTION DEFINITIONS                            */
+<<<<<<< HEAD
 /* -------------------------------------------------------------------------- */
 
 void initialize_pots(Pot axis[], int& pots_n, int& monsters_n) {
@@ -229,3 +250,6 @@ void display_pots(Pot axis[], int& pots_n, int& days) {
 
 
 }
+=======
+/* -------------------------------------------------------------------------- */
+>>>>>>> 85a56cda0ad7f0fb0df558b05fff76b89f45d407
