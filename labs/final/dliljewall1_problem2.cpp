@@ -1,5 +1,5 @@
 // CSC 123
-// Assignment: Problem #2
+// Assignment: Final Exam Problem #2
 // File Name: dliljewall1_problem2.cpp
 // Author: David Liljewall
 // Last Modified: 5/16/2020
@@ -101,6 +101,7 @@ int main() {
 
     // delete dynamic array grid[] and set to NULL to prevent memory leaks:
     delete[] grid;
+    n_pots = 0;
     grid = NULL;
 
     getchar();

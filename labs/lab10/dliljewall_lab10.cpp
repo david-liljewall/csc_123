@@ -120,6 +120,7 @@ int main() {
         {
             flag = false;
         }
+        
     } while (flag);
 
     cout << " << Program Exited >> " << endl;

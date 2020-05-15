@@ -1,0 +1,18 @@
+Final Exam Problem 3
+----
+
+Variables:
+- Name --> string for the name of the movie
+- Length --> int value for the number of minutes the movie plays for
+- Favorite --> int value between 0 and 10. EVERY TIME A MOVIE IS SEARCHED THIS NUMBER GETS INCREMENTED BY 1.
+
+
+Functions:
+- Add movie to list --> user manually enters movies they want to watch or keep in their viewing list
+- Remove movie from list --> user removes a movie from the list by entering the name
+- Search a movie in list --> user enters name of movie and searches the list
+- Display List --> user picks whether to display the viewing list BY NAME or by FAVORITE VALUE (**both are sorted)
+- Save Data --> saves the current viewing list to a file saving each movie information one line at a time:
+	Name
+	Length
+	Favorite
