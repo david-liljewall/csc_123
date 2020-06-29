@@ -1,0 +1,8 @@
+Movie #1: Django Unchained
+Runtime: 180
+Favorite: 0
+
+Movie #2: Interstellar
+Runtime: 200
+Favorite: 1
+
